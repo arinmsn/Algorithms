@@ -62,3 +62,54 @@ var globalVar = "global";
     return "California";
   }
 })();
+
+/*
+    var is function scoped
+    - global scope
+    - function scope
+
+    const, let (block scoped)
+    - global scope
+    - function scope
+    - block scope (for loop, if/else statement)
+*/
+
+// Example 1
+
+function getTotal() {
+  console.log(multiplier); // undefined
+  console.log(total); // ReferenceError: total is not defined
+
+  let total = 0;
+
+  for (var i = 0; i < 10; i++) {
+    let valueToAdd = i;
+    var multiplier = 2; // Hoisted to top of F(n) not for-loop!
+    total += valueToAdd * multiplier;
+  }
+
+  return total;
+}
+
+getTotal();
+
+// Example 2 - Hoisted to top...
+
+function getTotal() {
+  let total;
+  var multiplier;
+
+  total = 0;
+
+  for (var i = 0; i < 10; i++) {
+    let valueToAdd;
+
+    valueToAdd = i;
+    multiplier = 2;
+    total += valueToAdd * multiplier;
+  }
+
+  return total;
+}
+
+getTotal();
