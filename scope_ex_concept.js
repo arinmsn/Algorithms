@@ -36,3 +36,29 @@ myBike.logColor();
       console.log("In IIFE - self.color: " + self.color);   // Common technique 
     })();
 */
+
+// Another Example of Scope
+
+// Global (name)
+// Local (name)
+// Local
+// Local
+
+//let name = 'Andrew';
+if (true) {
+  //let name = 'Mike'
+  if (true) {
+    name = "Jen"; // Big problem - Creating a global variable "Leaked global"
+    let name = "Jen"; // Better alternative
+    console.log(name);
+  }
+}
+
+if (true) {
+  console.log(name);
+}
+
+// Output: Jen
+// Output: Jen
+
+// With let, we will get RefereneError: name is not defined.
