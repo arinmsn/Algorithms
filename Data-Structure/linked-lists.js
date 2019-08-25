@@ -225,3 +225,18 @@ myLL.addToTail(1);
 myLL.addToTail(5);
 
 console.log(myLL.indexOf(5));
+
+/*
+	Perofrmance: Time Complexity: 
+		Constant Time - O(1) for Adding/removing head and tails
+		Linear time complexity O(n) - Searching through linked list
+		Linked List are performant in searching.
+		Efficient in use of memory/space
+	Case Uses:
+		Online gaming
+		Poker, board games, dominoes
+	Memory Management Benefits:
+		Data doesn't have to be stored together.
+		It helps us break up data that is spanned across large area
+
+*/
