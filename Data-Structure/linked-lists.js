@@ -156,6 +156,7 @@ LinkedList.prototype.removeTail = function() {
 	// Change the LinkList's tail pointer to be the node before
 	// the tail node we will be removing
 	this.tail = this.tail.prev;
+	// If the list is not empty now
 	if (this.tail) this.tail.next = null;
 	// If list is going to be empty after we remove the original tail
 	else this.head = null;
@@ -169,3 +170,58 @@ ll.addToHead("two");
 ll.addToHead("three");
 
 console.log(ll.removeTail());
+
+// Search method
+LinkedList.prototype.search = function(searchValue) {
+	// Starting point
+	var currentNode = this.head;
+	var counter = 0;
+	while (currentNode) {
+		if (currentNode.value === searchValue) return currentNode.value;
+		currentNode = currentNode.next;
+	}
+	return null;
+};
+
+var myLL = new LinkedList();
+
+myLL.addToHead(4030);
+myLL.addToHead(200);
+myLL.addToHead("yes");
+myLL.addToHead("hi");
+myLL.addToHead("maybe");
+myLL.addToHead(20);
+
+console.log(myLL.search(4030));
+
+/*  Add a new method (indexOf)
+    If we have (4)---(1)---(4)---(7) in the four nodes
+    If we pass 4 into our F(n), we expect to get the index
+    values in an array. Output: [0, 2]
+*/
+
+LinkedList.prototype.indexOf = function(value) {
+	var indexes = [];
+	var currentIndex = 0;
+	var currentNode = this.head;
+	while (currentNode) {
+		if (currentNode.value === value) {
+			indexes.push(currentIndex);
+		}
+		currentNode = currentNode.next;
+		currentIndex++;
+	}
+	return indexes;
+};
+
+var myLL = new LinkedList();
+
+myLL.addToTail(5);
+myLL.addToTail(3);
+myLL.addToTail(4);
+myLL.addToTail(5);
+myLL.addToTail(9);
+myLL.addToTail(1);
+myLL.addToTail(5);
+
+console.log(myLL.indexOf(5));
