@@ -147,3 +147,25 @@ ll.addToTail(3000);
 
 console.log(ll.removeHead()); // 2000
 ll.removeHead();
+
+// Remove Tail
+LinkedList.prototype.removeTail = function() {
+	// LinkedList is empty. If there is no tail;therefore, list is empty
+	if (!this.tail) return null;
+	var val = this.tail.value;
+	// Change the LinkList's tail pointer to be the node before
+	// the tail node we will be removing
+	this.tail = this.tail.prev;
+	if (this.tail) this.tail.next = null;
+	// If list is going to be empty after we remove the original tail
+	else this.head = null;
+	return val;
+};
+
+var ll = new LinkedList();
+
+ll.addToHead("one");
+ll.addToHead("two");
+ll.addToHead("three");
+
+console.log(ll.removeTail());
