@@ -95,3 +95,26 @@ bst.insert(10);
 console.log(bst.right.left.left); // should be 59
 console.log(bst.left.right.left); // should be 35
 console.log(bst.right.right); // should be 100
+
+/*
+    Contains Method
+*/
+
+BST.prototype.contains = function(value){
+    if (value === this.value) return true;
+    else if (value < this.value) {
+        // if there is no left child node
+        if (!this.left) return false;
+        else return this.left.contains(value);
+    } else if (value > this.value) {
+        // if there is no right child node
+        if (!this.right) return false;
+        else return this.right.contains(value);
+    }
+};
+
+// Testing the 'Contains' method
+console.log(bst.contains(50)); // Should get true
+console.log(bst.contains(105)); // true
+console.log(bst.contains(1005)); // false
+console.log(bst.contains(82)); // false
