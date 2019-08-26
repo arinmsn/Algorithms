@@ -62,7 +62,7 @@ function BST(value){
 }
 
 // Just crated one node with no children
-var bst = new BST(50); 
+// var bst = new BST(50); 
 
 BST.prototype.insert = function(value){
     // Is value < or > than root node?
@@ -71,6 +71,27 @@ BST.prototype.insert = function(value){
         if (!this.left) this.left = new BST(value);
         else this.left.insert(value);
     } else if (value > this.value) {
-
+        if (!this.right) this.right = new BST(value);
+        
+        // if there is a right child
+        else this.right.insert(value);
     }
 };
+
+var bst = new BST(50); 
+
+bst.insert(30);
+bst.insert(70);
+bst.insert(100);
+bst.insert(60);
+bst.insert(59);
+bst.insert(20);
+bst.insert(45);
+bst.insert(35);
+bst.insert(85);
+bst.insert(105);
+bst.insert(10);
+
+console.log(bst.right.left.left); // should be 59
+console.log(bst.left.right.left); // should be 35
+console.log(bst.right.right); // should be 100
