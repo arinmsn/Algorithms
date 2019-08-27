@@ -121,5 +121,15 @@ console.log(bst.contains(82)); // false
 
 // Depth First Traversal (in-order) From least to greatest
 BST.prototype.depthFirstTraversal = function(iteratorFunc) {
-
+    //iteratorFunc(this.left.value);
+    if (this.left) this.left.depthFirstTraversal(iteratorFunc);
+    iteratorFunc(this.value); // Parent node
+    if (this.right) this.right.depthFirstTraversal(iteratorFunc);
+    //iteratorFunc(this.right.value);
 };
+
+bst.depthFirstTraversal(log);
+
+function log(value){
+    console.log(value);
+}
