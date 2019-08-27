@@ -133,3 +133,36 @@ bst.depthFirstTraversal(log);
 function log(value){
     console.log(value);
 }
+
+// Depth First Traversal (any order)
+// Refactoring
+BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
+    //iteratorFunc(this.left.value);
+    if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);
+    if (order === 'in-order') iteratorFunc(this.value); // Parent node
+    if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
+    //iteratorFunc(this.right.value);
+};
+// We should get same results as above.
+bst.depthFirstTraversal(log, 'in-order');
+
+function log(value){
+    console.log('--- In-order ---', value);
+}
+
+
+// 'Pre-order' - We will go to Parent node first, next the left branch, 
+// then we visit the right branch -- Useful when we are making copy.
+BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
+    if (order === 'pre-order') iteratorFunc(this.value); 
+    if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);
+    if (order === 'in-order') iteratorFunc(this.value); // We skip it.
+    if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
+};
+
+bst.depthFirstTraversal(log, 'pre-order');
+
+function log(value){
+    console.log('--- Pre-Order ---');
+    console.log(value);
+}
