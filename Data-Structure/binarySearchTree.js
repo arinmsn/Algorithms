@@ -213,3 +213,25 @@ function log(node){
     console.log(node.value);
 }
 bst.breathFirstTraversal(log);
+
+BST.prototype.getMinVal = function(){
+    if (this.left) return this.left.getMinVal();
+    else return this.value; // Furthest left child node
+};
+
+BST.prototype.getMaxVal = function() {
+    if (this.right) return this.right.getMaxVal();
+    else return this.value;
+};
+
+function log(node){
+    console.log(node.value)
+}
+
+console.log('MIN: ', bst.getMinVal());  // MIN: 10
+console.log('MAX: ', bst.getMaxVal());  // MAX: 105
+
+// Peroformance: O (log n) -- faster than Linked List
+// Binary Search Tree needs to be balanced to be optimized. (most performant)
+// Uses: Storing data, searching and deleting data, phone book, dictionary
+//      Sotring users' IDs
