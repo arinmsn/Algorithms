@@ -166,3 +166,50 @@ function log(value){
     console.log('--- Pre-Order ---');
     console.log(value);
 }
+
+// Post-order
+// Left children, next Right children, then Parent
+// Uses: To delete nodes. It works from lowest level.
+BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
+    if (order === 'pre-order') iteratorFunc(this.value); // Not run
+    if (this.left) this.left.depthFirstTraversal(iteratorFunc, order); // Left children first
+    if (order === 'in-order') iteratorFunc(this.value); // Not run
+    if (this.right) this.right.depthFirstTraversal(iteratorFunc, order); // Right children second
+    if (order === 'post-order') iteratorFunc(this.value); // Last is parent
+};
+// We should get following output
+// 10, 20, 35, 45, 30, 59, 60, 85, 105, 100, 70, 50
+
+/*
+    Breath First Traversal
+    It will go over each node level by level, starting from the very top
+    Horizontal motion
+    Uses: Defining hierachy (employees, pinpointing executives)
+*/
+
+BST.prototype.breathFirstTraversal = function(iteratorFunc) {
+    // Define a queue (FIFO list)
+    var queue = [this];
+    while (queue.length){
+        var treeNode = queue.shift();
+        iteratorFunc(treeNode);
+        if (treeNode.left) queue.push(treeNode.left);
+        if (treeNode.right) queue.push(treeNode.right);
+    }
+}
+
+/*
+    In our case, it will start with var queue = [50]
+    Next iteratorFun(50), iterator function runs 
+
+    We can then move on to the next nodes var queue = [ 30, 70]
+    We follow same procedure with these nodes.
+    iteratorFun(30), then iteratorFun(70)
+*/
+
+// Testing 
+// List the tree
+function log(node){
+    console.log(node.value);
+}
+bst.breathFirstTraversal(log);
