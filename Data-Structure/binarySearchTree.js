@@ -118,3 +118,8 @@ console.log(bst.contains(50)); // Should get true
 console.log(bst.contains(105)); // true
 console.log(bst.contains(1005)); // false
 console.log(bst.contains(82)); // false
+
+// Depth First Traversal (in-order) From least to greatest
+BST.prototype.depthFirstTraversal = function(iteratorFunc) {
+
+};
