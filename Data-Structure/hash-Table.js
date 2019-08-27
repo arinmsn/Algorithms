@@ -40,7 +40,7 @@ console.log(myHT);
 // console.log('hello world'.charCodeAt(1)); // Outpout: 101
 // console.log('hello world'.charCodeAt(4)); // Outpout: 111
 
-// Method to hash our letter into a #
+// Method to hash our letter/string into a #
 HashTable.prototype.hash = function(key){
     var total = 0;
     for (var i = 0; i < key.length; i++){
@@ -53,3 +53,28 @@ HashTable.prototype.hash = function(key){
 var myHT = new HashTable(30);
 console.log(myHT.hash('Becca')); // 12
 
+// Insert method
+// It will take key and value pair and turn them into a Hash node.
+// Then it will place that hash node in the correct bucket.
+HashTable.prototype.insert = function(key, value){
+    var index = this.hash(key);
+    // our bucket is empty at given index
+    if (!this.buckets[index]) this.buckets[index] = new HashNode(key, value);
+    // else if there is a node or multiple nodes chained together in the bucket
+    else {
+        var currentNode = this.buckets[index];
+        // Current node is present
+        while (currentNode.next) {
+            // Continue to travel down the chain
+            currentNode = currentNode.next;
+        }
+        currentNode.next = new HashNode(key, value);
+    }
+}
+
+// Testing the Insert method
+myHT.insert('Suzzane', 'suzan007@gmail.com');
+myHT.insert('Johnson', 'johny@gmail.com');
+myHT.insert('enazzuS', 'dansuz@gmail.com')
+
+console.log(myHT.buckets);
