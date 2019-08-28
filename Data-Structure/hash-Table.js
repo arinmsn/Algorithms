@@ -59,12 +59,23 @@ console.log(myHT.hash('Becca')); // 12
 HashTable.prototype.insert = function(key, value){
     var index = this.hash(key);
     // our bucket is empty at given index
-    if (!this.buckets[index]) this.buckets[index] = new HashNode(key, value);
+    if (!this.buckets[index]) {
+        this.buckets[index] = new HashNode(key, value);
+    } else if (this.buckets[index].key === key) {
+        this.buckets[index].value = value;
+    }
     // else if there is a node or multiple nodes chained together in the bucket
     else {
+        // Bucket is not empty
         var currentNode = this.buckets[index];
         // Current node is present
         while (currentNode.next) {
+            if (currentNode.next.key === key) {
+                // This is the friend we want to update.
+                currentNode.next.value = value;
+                // We want to stop the method from running here.
+                return;
+            }
             // Continue to travel down the chain
             currentNode = currentNode.next;
         }
@@ -73,8 +84,13 @@ HashTable.prototype.insert = function(key, value){
 }
 
 // Testing the Insert method
-myHT.insert('Suzzane', 'suzan007@gmail.com');
+myHT.insert('Dean', 'suzan007@gmail.com');
 myHT.insert('Johnson', 'johny@gmail.com');
-myHT.insert('enazzuS', 'dansuz@gmail.com')
+myHT.insert('Dane', 'dansuz@gmail.com')
+
+// Testing refactored Insert method (updating current users' info...)
+myHT.insert('Dean', 'de00@gmail.com')
+myHT.insert('Johnson', 'j00@gmail.com');
+myHT.insert('Dane', 'da00@gmail.com')
 
 console.log(myHT.buckets);
