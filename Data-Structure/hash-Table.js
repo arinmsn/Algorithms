@@ -1,12 +1,14 @@
 /*
     Hash Table
-
+    Performance:
     Runtime
     Lookup:     O(1)
     Insertion:  O(1)
 
     Applications/Uses: Fast runtime
-    Uses: Storage in the form of key values
+    Uses: Storage in the form of key values, users of an app, 
+    Drawback: data doesn't store references to other pieces of data in the data structure.
+    You could place specific properties in your has nodes that would reference other nodes.
     Hash table is table made up of cells (buckets)
     {
         key: "Book"
@@ -14,6 +16,7 @@
     }
 
     If hash table is setu up correctly, we can avoid too many collisions
+    
 
 */
 
@@ -50,8 +53,7 @@ HashTable.prototype.hash = function(key){
     // toatl % 30 = remainder (0-29)
     return bucket;
 };
-var myHT = new HashTable(30);
-console.log(myHT.hash('Becca')); // 12
+
 
 // Insert method
 // It will take key and value pair and turn them into a Hash node.
@@ -83,6 +85,26 @@ HashTable.prototype.insert = function(key, value){
     }
 }
 
+// Get method - It will help us to retrieve info about specific user
+HashTable.prototype.get = function(key){
+    var index = this.hash(key);
+    // If our bucket is empty
+    if (!this.buckets[index]) return null;
+    // Our bucket is not empty
+    else {
+        var currentNode = this.buckets[index];
+        while (currentNode) {
+            // currentNode.value in our case is user's email
+            if (currentNode.key === key) return currentNode.value; 
+            currentNode = currentNode.next;
+        }
+        return null;
+    }
+};
+
+var myHT = new HashTable(30);
+console.log(myHT.hash('Becca')); // 12
+
 // Testing the Insert method
 myHT.insert('Dean', 'suzan007@gmail.com');
 myHT.insert('Johnson', 'johny@gmail.com');
@@ -94,3 +116,26 @@ myHT.insert('Johnson', 'j00@gmail.com');
 myHT.insert('Dane', 'da00@gmail.com')
 
 console.log(myHT.buckets);
+
+// Testing Get Method 
+console.log(myHT.get('Dane')); // da00@gmail - works!
+
+HashTable.prototype.retrieveAll = function(){
+    // All nodes will be stored here
+    var allNodes = [];
+    // Loop through all buckets
+    for (var i = 0; i < this.numBuckets; i++){
+        // Define first node
+        var currentNode = this.buckets[i];
+        while(currentNode) {
+            allNodes.push(currentNode);
+            currentNode = currentNode.next;
+        }
+    }
+    return allNodes;
+};
+
+myHT.insert('Jose', 'jose-s@yahoo.com');
+myHT.insert('Samione', 'sasmi@yahoo.com')
+
+console.log(myHT.retrieveAll());
