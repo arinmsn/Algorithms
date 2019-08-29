@@ -11,32 +11,34 @@ Note: 'Take the secrete note.'
 
 */
 
-function harmlessRandsomNote(noteText, magazineText){
-    // Given: no punctuations; all letters are lowercase
-    // All words separated 
-    var noteArr = noteText.split(' '); 
-    var magazineArr = magazineText.split(' ');
-    // Hash table technique
-    var magazineObj = {};
+function harmlessRandsomNote(noteText, magazineText) {
+  // Given: no punctuations; all letters are lowercase
+  // All words separated
+  var noteArr = noteText.split(" ");
+  var magazineArr = magazineText.split(" ");
+  // Hash table technique
+  var magazineObj = {};
 
-    magazineArr.forEach(word => {
-        if (!magazineObj[word]) magazineObj[word] = 0;
-        magazineObj[word]++;
-    });
-    console.log(magazineObj);
+  magazineArr.forEach(word => {
+    if (!magazineObj[word]) magazineObj[word] = 0;
+    magazineObj[word]++;
+  });
+  // console.log(magazineObj);
 
-    var noteIsPossible = true;
-    noteArr.forEach(word => {   
-        if (magazineObj[word]) {
-            magazineObj[word]--;
-            if (magazineObj[word] < 0) noteIsPossible = false;
-        } 
-        else noteIsPossible = false;
-    });
-    return noteIsPossible;
+  var noteIsPossible = true;
+  noteArr.forEach(word => {
+    if (magazineObj[word]) {
+      magazineObj[word]--;
+      if (magazineObj[word] < 0) noteIsPossible = false;
+    } else noteIsPossible = false;
+  });
+  return noteIsPossible;
 }
 
-harmlessRandsomNote('across the metro', 'Meteorologists across the metro are trying to find out how this potential snowfall');
+harmlessRandsomNote(
+  "across the metro",
+  "Meteorologists across the metro are trying to find out how this potential snowfall"
+);
 
 /*
 Output: 

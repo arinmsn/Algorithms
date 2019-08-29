@@ -24,7 +24,7 @@ function isPalindrome(string) {
   var validCharacters = "abcdefghijklmnopqrstuvxyz".split("");
 
   var lettersArr = [];
-  charactersArr.forEach(chat => {
+  charactersArr.forEach(char => {
     if (validCharacters.indexOf(char) > -1) lettersArr.push(char);
   });
 
@@ -32,4 +32,5 @@ function isPalindrome(string) {
   else return false;
 }
 
-isPalindrome("Was it a cat I saw");
+console.log(isPalindrome("Was it a cat I saw")); //true
+console.log(isPalindrome("seas")); // false
