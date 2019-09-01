@@ -38,7 +38,11 @@ function getMean(array) {
 }
 
 function getMedian(array) {
-  // Your code
+  // Sort array first - in ascending order
+  array.sort(function(a, b) {
+    return a - b;
+  });
+  var median;
 }
 
 function getMode(array) {
