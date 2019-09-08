@@ -27,4 +27,4 @@ function fibonacci(position) {
 fibonacci(6); // 8
 fibonacci(15); // 610
 
-// Time Complexity is poor; (O)^n
+// Time Complexity is poor; O(2^n)
