@@ -10,6 +10,7 @@
     Drawback: data doesn't store references to other pieces of data in the data structure.
     You could place specific properties in your has nodes that would reference other nodes.
     Hash table is table made up of cells (buckets)
+    
     {
         key: "Book"
         value: "$24.99"
@@ -17,6 +18,9 @@
 
     If hash table is setu up correctly, we can avoid too many collisions
     
+    For small datasets, arrays are usually more efficient.
+    Hash tables are typically very fast.
+    Hash tables don't order entries in a predictable way.
 
 */
 
