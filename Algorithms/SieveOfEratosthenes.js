@@ -31,3 +31,29 @@
     the time we get to the root of n.
 
 */
+
+function sieveOfEratosthenes(n) {
+	var primes = [];
+	for (var i = 0; i <= n; i++) {
+		primes[i] = true;
+	}
+
+	primes[0] = false;
+	primes[1] = false;
+
+	for (var i = 2; i <= Math.sqrt(n); i++) {
+		for (j = 2; i * j <= n; j++) {
+			primes[i * j] = false;
+		}
+	}
+
+	var result = [];
+	for (var i = 0; i < primes.length; i++) {
+		if (primes[i]) result.push(i);
+	}
+
+	return result;
+}
+
+//sieveOfEratosthenes(10); // [ 2, 3, 5, 7 ]
+sieveOfEratosthenes(50); // [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 ]

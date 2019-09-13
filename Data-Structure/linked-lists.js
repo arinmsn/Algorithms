@@ -1,3 +1,19 @@
+/*
+	Linked Lists
+	
+	* Collection of data elements, called notes.
+	They are sort of like an array, but a little bit different.
+	* Each node containss reference to the next node in the list.
+	* Each node holds whatever data the application needs
+	(+)
+	* Elements can be easily inserted and removed.
+	* Underlying moemroy doesn't need to be reorganized.
+	(-) Drawback
+	* Can't do constant-time random item access
+	* Item lookup is linear in time complexity ( O(n) )
+*/
+
+
 // LinkList constrctor
 function LinkedList() {
 	// There might not be any nodes yet.
