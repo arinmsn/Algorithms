@@ -18,6 +18,7 @@ function reverseString(str) {
 //console.log(reverseString("Bye Bye")); // eyB eyB
 //console.log(reverseString("Greetings from Living Spaces")); // secapS gniviL morf sgniteerG
 
+/*
 // Solution 2
 function reverseString(str) {
   var newStr = "";
@@ -26,6 +27,19 @@ function reverseString(str) {
   }
   return newStr;
 }
+*/
+
+/*
+// Solution 3
+function reverseString(str) {
+  var rev = "";
+  str.split("");
+  for (var i = str.length - 1; i >= 0; i--) {
+    rev += str[i];
+  }
+  return rev;
+}
+*/
 
 console.log(reverseString("hello")); // olleh
 console.log(reverseString("Bye Bye")); // eyB eyB

@@ -1,7 +1,5 @@
 /*
 
-
-
     function fibonacci(position){
         // Your code
     }
@@ -13,8 +11,6 @@
     Example:
     fibonacci(4); // returns 3
     fibonacci(9); // returns 34
-
-
 
 */
 
