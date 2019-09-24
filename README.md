@@ -1,2 +1,2 @@
-# Interview Prep
-Interview Prep - Various sources (books, sites, e.g.)
+# Algorithms, data structures, and notes on such topics
+
