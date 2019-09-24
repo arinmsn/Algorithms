@@ -14,6 +14,7 @@
 
 */
 
+/*
 function isPalindrome(string) {
   // First, let's lowercase the letters
   string = string.toLowerCase();
@@ -32,5 +33,37 @@ function isPalindrome(string) {
   else return false;
 }
 
+
+*/
+
+// Another solution
+function isPalindrome(str) {
+  // Front and back pointers
+  let front = 0;
+  let back = str.length - 1;
+
+  while (back > front) {
+    // increment front point
+    while (str[front].match(/[\W_]/)) {
+      front++;
+      continue;
+    }
+    while (str[back].match(/[\W_]/)) {
+      back--;
+      continue;
+    }
+    // Compare
+    if (str[front].toLowerCase() !== str[back].toLowerCase()) return false;
+    front++;
+    back--;
+  }
+  // It's a palindrome
+  return true;
+}
+
 console.log(isPalindrome("Was it a cat I saw")); //true
 console.log(isPalindrome("seas")); // false
+console.log(isPalindrome("Kayak")); // true
+console.log(isPalindrome("Rotator")); // true
+console.log(isPalindrome("No lemon, no melon")); // true
+console.log(isPalindrome("dady")); // false
