@@ -24,3 +24,18 @@ function largestNumber(arr) {
 }
 
 console.log(largestNumber(arr)); // Should return [10, 49, 199, 999, 4000]
+
+// Solution 2
+function largestNumber(arr) {
+  return arr.map(function(group) {
+    return group.reduce(function(prev, current) {
+      return current > prev ? current : prev;
+    });
+  });
+}
+
+// Solution 3
+function largestNumber(arr) {
+  // Math.max([ ... ]) cannot be applied directly
+  return arr.map(Function.apply.bind(Math.max, null));
+}
